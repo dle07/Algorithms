@@ -2,34 +2,49 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
 
 #include "./Sorting/Sort.hpp"
 #include "./Sorting/Sort.cpp"
+#include "./Graphs/Graph.hpp"
+#include "./Graphs/Graph.cpp"
+
 using std:: endl;
 using std:: cout;
 using std:: string;
-
-
-class Test{
-
-    public:
-    static void print(){
-        cout<<"Hello"<<endl;
-        
-    }
-    static void change(std :: vector<int> & test){
-        for( int i=0; i<test.size() ; i++){
-            test[i] = 0 ;
-        }
-    }
-};
+using namespace std;
 
 
 int main(){
-    Test::print();
-    std :: vector<int> test{10,9,8,7,6,5,4,3,2,1,34,5,6,7,8,8,5,5,5,5,5,5,5,5,5,5,5,5,5};
-    Sort::selectionSort(test);
-
-    Sort::print(test);
+    vector<vector<int>> test = {
+    //   0 1 2 3 4 5 
+        {0,1,1,0,0,0},  //0
+        {1,0,0,1,0,0},  //1
+        {1,0,0,1,0,0},  //2
+        {0,1,1,0,1,1},  //3
+        {0,0,0,1,0,0},  //4
+        {0,0,0,1,0,0}   //5
+    };
+    set<int> mySet;
+    for( int i  =0 ; i<10; i++){
+        mySet.insert(i);
+    }
+    auto it = mySet.begin();
+    cout<<*it<<endl;
+    
+   
     return 0;
+    
+    
 }
+
+/*
+{0,1,1,1,1,0,0},
+        {1,0,1,0,0,0,0},
+        {1,0,0,0,0,0,0},
+        {1,0,0,0,0,0,0},
+        {1,0,0,0,0,1,0},
+        {0,0,0,0,1,0,1},
+        {0,0,0,0,0,1,0},
+
+*/

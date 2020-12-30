@@ -1,0 +1,22 @@
+void Graph ::  bfsMat(){
+    int visited[this->adjMat.size()] = {0};
+    queue<int> q;
+    int i;
+    cout<<0<<endl;
+    visited[0] = 1;
+    q.push(0);
+    
+
+    while(!q.empty()){
+        i = q.front();
+        q.pop();
+        for( int j = 0; j < adjMat.size(); j++){
+            if(adjMat[i][j] == 1 && visited[j] == 0){
+                cout<<j<<" ";
+                visited[j] = 1;
+                q.push(j);
+            }
+        }
+        cout<<endl;
+    }
+};

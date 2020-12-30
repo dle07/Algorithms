@@ -76,6 +76,18 @@ void Sort :: insertionSort(std ::vector<int>& vecInput){
 
 
 
+
+void Sort :: quickSort (std :: vector <int> & vecInput){
+    
+}
+
+void Sort :: swap(int* a, int*b){
+    int temp = *a;      //stores the value of a,
+    *a = *b;            //set a to b
+    *b = temp;          //set b to a's initial value
+}
+
+
 //Recursive Divide and conquer, The process of merging is linear,The number of merges performed is proportional to log2(n)
 void Sort :: mergeSort(std :: vector<int>& vecInput){
     int n = vecInput.size();
@@ -87,25 +99,6 @@ void Sort :: mergeSort(std :: vector<int>& vecInput){
     mergeSort(right);
     merge(left,right,vecInput);
 }
-
-void Sort :: quickSort (std :: vector <int> & vecInput){
-    
-}
-
-
-
-
-
-
-
-
-
-void Sort :: swap(int* a, int*b){
-    int temp = *a;      //stores the value of a,
-    *a = *b;            //set a to b
-    *b = temp;          //set b to a's initial value
-}
-
 
 
 void Sort:: merge(std :: vector<int>&left, std :: vector<int> &right, std :: vector<int> &actual){
