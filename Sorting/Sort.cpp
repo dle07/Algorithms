@@ -1,5 +1,8 @@
 #include "Sort.hpp"
 
+int getRandomPivot(int a, int b){//Helper function to generate a random pivot in ranges of [a,b]
+    return (rand()%(b-a+1)) + a;
+}
 
 
 
@@ -77,8 +80,37 @@ void Sort :: insertionSort(std ::vector<int>& vecInput){
 
 
 
-void Sort :: quickSort (std :: vector <int> & vecInput){
-    
+void Sort :: quickSort (std :: vector <int> & vecInput){ //Modularity, not actual implementation
+    quickSortImpl(vecInput,0,vecInput.size()-1);
+}
+
+
+void Sort :: quickSortImpl(std :: vector<int>& vecInput, int start, int end){
+    if(start<end){ // If the first index is less than last it means the size is >=2
+        int part = partition(vecInput,start,end);
+        quickSortImpl(vecInput, start, part-1);
+        quickSortImpl(vecInput,part+1,end);
+    }
+
+}
+
+//Our pivot can be anything, but for better performance lets pick a random pivot
+int Sort :: partition(std :: vector<int> &vecInput, int start, int end){ //Picks last element for partition, p = ((end-start)/2)+start;
+    int p = getRandomPivot(start,end);
+    int pivot = vecInput[p];
+    swap(&vecInput[p],&vecInput[end]);
+
+    int i = start; //keeps track of index where if an element was lesser than pivot, we should swap it
+    int j = start;
+    while( j < end){
+        if( vecInput[j]<pivot){
+            swap(&vecInput[i],&vecInput[j]);
+            i++;
+        }
+        ++j;
+    }
+    swap(&vecInput[i],&vecInput[end]);
+    return i; //This is the index of the parition, its now in its right place.
 }
 
 void Sort :: swap(int* a, int*b){
