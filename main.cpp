@@ -5,6 +5,7 @@
 #include <set>
 #include <map>
 #include <iterator>
+#include <list>
 #include <unordered_map>
 #include <stdlib.h>  
 
@@ -25,14 +26,30 @@ using namespace std;
 
 
 int main(){
-    
-    vector<int> test = {5,4,7,3,6,1,8,3,4,8,1,3,8,3,8,2,5};
-    Sort::quickSort(test);
-    for( int el: test){
-        cout<<el<<" ";
+    Graph test(9);// 0-8 vertices
+    addBiEdge(test.adjList,0,1);
+    addBiEdge(test.adjList,1,2);    
+    addBiEdge(test.adjList,1,5);
+
+    addBiEdge(test.adjList,2,3);
+    addBiEdge(test.adjList,5,3);
+    addBiEdge(test.adjList,3,4);
+
+    addBiEdge(test.adjList,3,6);
+    addBiEdge(test.adjList,6,8);
+    addBiEdge(test.adjList,6,7);
+
+    test.bfsList(0);
+
+    for( int i = 0; i < test.adjList.size(); i++){
+        cout<<"Depth of "<<i<<":   "<<test.level[i]<<endl;
     }
-    
-    
+    cout<<"====================   PARENT   ==================================="<<endl;
+    for( int i = 0; i < test.adjList.size();i++){
+        cout<<"Parent of "<<i<<":  "<<test.parent[i]<<endl;
+    }
+    string path = test.reconstructPath(8);
+    cout<<path<<endl;
     return 0;
     
     

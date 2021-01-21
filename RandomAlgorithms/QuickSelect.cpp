@@ -2,7 +2,8 @@
     Quick select uses quick sort's parition idea to find the of the kth largest or smallest value of an array
     If the pivot index is equal to the target index, it means that everything left to that array is lesser than the pivot value,
     everything to the right is greater or equal to to the pivot value;
-
+    Time - O(n) Space O(1)
+    Note: We know absolutely nothing about the ordering of elements to the right and left of the pivot index if found!
 */
 #include <iostream>
 #include <vector>
